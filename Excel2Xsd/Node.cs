@@ -90,14 +90,14 @@ namespace Excel2Xsd
         {
             if (IsList)
             {
-                if (this.Type == String.Empty && this.Metadata.ToUpper() != "ENUM")
+                if (IsBaseType)
                 {
                     var type = "xs:" + this.Metadata;
                     return ListElementTemplate.Replace("{Name}", this.Name)
                     .Replace("{Type}", type)
                     .Replace("{Remark}", this.Remark);
                 }
-                if (this.Metadata.ToUpper() == "ENUM")
+                if (IsEnum)
                 {
                     return ElementTemplate.Replace("{Name}", this.Name)
                     .Replace("{Type}", this.Name)
@@ -109,20 +109,24 @@ namespace Excel2Xsd
             }
             else
             {
-                if (this.Type == String.Empty && this.Metadata.ToUpper() != "ENUM")
+                if (IsBaseType)
                 {
                     var type = "xs:" + this.Metadata;
                     return ElementTemplate.Replace("{Name}", this.Name)
                     .Replace("{Type}", type)
                     .Replace("{Remark}", this.Remark);
                 }
-                if (this.Metadata.ToUpper() == "ENUM")
+                if (IsEnum)
                 {
                     return ElementTemplate.Replace("{Name}", this.Name).Replace("{Type}", this.Type).Replace("{Remark}", this.Remark);
                 }
                 return ElementTemplate.Replace("{Name}", this.Name).Replace("{Type}", this.Type).Replace("{Remark}", this.Remark);
             }
         }
+
+        private bool IsEnum => this.Metadata.ToUpper() == "ENUM";
+
+        private bool IsBaseType => this.Type == String.Empty && this.Metadata.ToUpper() != "ENUM";
 
         public string BuildEnumType(bool isCoupeWithList = false)
         {

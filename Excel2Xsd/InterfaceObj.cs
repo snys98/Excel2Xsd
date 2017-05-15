@@ -23,7 +23,7 @@ namespace Excel2Xsd
                 node.Type = validRowPair.type;
                 node.Metadata = validRowPair.metadata;
                 node.Range = validRowPair.range;
-                node.Remark = validRowPair.range;
+                node.Remark = validRowPair.remark;
                 return node;
             });
             allNodes.AddRange(validNodes);
