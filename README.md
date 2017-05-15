@@ -13,8 +13,8 @@ xsd builder from excel
 |||StringField1||string||this is a string|
 |||StringField2||string||this is also a string|
 
-### 2. drag the excel file onto the Excel2Xsd.exe(after build)
-### 3. the program will generate a temp.xml in the active folder, that's the xsd out put
+### 2. Drag the excel file onto the Excel2Xsd.exe(after build)
+### 3. The program will generate a temp.xml in the active folder, that's the xsd out put
 
 ## Note:
 #### Metadata is some basic xsd element type
